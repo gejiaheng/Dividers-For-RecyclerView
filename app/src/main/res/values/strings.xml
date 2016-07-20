@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Divider</string>
+
+    <string name="divider_picker_title">Choose divider</string>
+    <string-array name="dividers">
+        <item>Underneath Divider</item>
+        <item>Overlay Divider</item>
+        <item>Inset Divider</item>
+    </string-array>
+</resources>
