@@ -10,6 +10,14 @@ There are three different implemetations of dividers.
 - [OverlayDivider](https://github.com/gejiaheng/Dividers-For-RecyclerView/blob/master/app/src/main/java/io/example/gjh/divider/decorator/OverlayDivider.java)
 - [InsetDivider](https://github.com/gejiaheng/Dividers-For-RecyclerView/blob/master/app/src/main/java/io/example/gjh/divider/decorator/InsetDivider.java)
 
+As described in [Meterial Design Guidelines](https://material-design.storage.googleapis.com/publish/material_v_8/material_ext_publish/0B_udO5B8pzrzYi1pc290WFRMc1U/components_dividers_specs.png):
+
+> The divider sits within the baseline of the tile.
+
+So I would suggest using `OverlayDivider` or `InsetDivider`. They draw dividers on the tiles, needing no extra inset. 
+
+![](https://material-design.storage.googleapis.com/publish/material_v_8/material_ext_publish/0B_udO5B8pzrzYi1pc290WFRMc1U/components_dividers_specs.png)
+
 Play with the code and figure out how to draw these naughty dividers and you will be able to draw any divider or any thing you want.
 
 # License
