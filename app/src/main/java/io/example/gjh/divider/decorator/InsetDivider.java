@@ -3,6 +3,7 @@ package io.example.gjh.divider.decorator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.support.annotation.ColorInt;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,6 +32,10 @@ public class InsetDivider extends RecyclerView.ItemDecoration {
     private int mSecondInset;
     private int mColor;
     private int mOrientation;
+    // set it to true to draw divider on the tile, or false to draw beside the tile.
+    // if you set it to false and have inset at the same time, you may see the background of
+    // the parent of RecyclerView.
+    private boolean mOverlay;
 
     private InsetDivider() {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -78,6 +83,14 @@ public class InsetDivider extends RecyclerView.ItemDecoration {
         this.mOrientation = orientation;
     }
 
+    public boolean getOverlay() {
+        return mOverlay;
+    }
+
+    public void setOverlay(boolean overlay) {
+        this.mOverlay = overlay;
+    }
+
     @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
         if (mOrientation == VERTICAL_LIST) {
@@ -97,8 +110,15 @@ public class InsetDivider extends RecyclerView.ItemDecoration {
                 continue;
             }
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
-            final int bottom = child.getBottom() + params.bottomMargin + Math.round(ViewCompat.getTranslationY(child));
-            final int top = bottom - mDividerHeight;
+            final int bottom;
+            final int top;
+            if (mOverlay) {
+                bottom = child.getBottom() + params.bottomMargin + Math.round(ViewCompat.getTranslationY(child));
+                top = bottom - mDividerHeight;
+            } else {
+                top = child.getBottom() + params.bottomMargin + Math.round(ViewCompat.getTranslationY(child));
+                bottom = top + mDividerHeight;
+            }
             c.drawRect(left, top, right, bottom, mPaint);
         }
     }
@@ -114,9 +134,30 @@ public class InsetDivider extends RecyclerView.ItemDecoration {
             }
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child
                     .getLayoutParams();
-            final int right = child.getRight() + params.rightMargin + Math.round(ViewCompat.getTranslationX(child));
-            final int left = right - mDividerHeight;
+            final int right;
+            final int left;
+            if (mOverlay) {
+                right = child.getRight() + params.rightMargin + Math.round(ViewCompat.getTranslationX(child));
+                left = right - mDividerHeight;
+            } else {
+                left = child.getRight() + params.rightMargin + Math.round(ViewCompat.getTranslationX(child));
+                right = left + mDividerHeight;
+            }
             c.drawRect(left, top, right, bottom, mPaint);
+        }
+    }
+
+    @Override
+    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+        if (mOverlay) {
+            super.getItemOffsets(outRect, view, parent, state);
+            return;
+        }
+
+        if (mOrientation == VERTICAL_LIST) {
+            outRect.set(0, 0, 0, mDividerHeight);
+        } else {
+            outRect.set(0, 0, mDividerHeight, 0);
         }
     }
 
@@ -131,6 +172,7 @@ public class InsetDivider extends RecyclerView.ItemDecoration {
         private int mSecondInset;
         private int mColor;
         private int mOrientation;
+        private boolean mOverlay = true; // set default to true to follow Material Design Guidelines
 
         public Builder(Context context) {
             mContext = context;
@@ -154,6 +196,11 @@ public class InsetDivider extends RecyclerView.ItemDecoration {
 
         public Builder orientation(int orientation) {
             mOrientation = orientation;
+            return this;
+        }
+
+        public Builder overlay(boolean overlay) {
+            mOverlay = overlay;
             return this;
         }
 
@@ -183,6 +230,8 @@ public class InsetDivider extends RecyclerView.ItemDecoration {
             } else {
                 insetDivider.setOrientation(mOrientation);
             }
+
+            insetDivider.setOverlay(mOverlay);
 
             return insetDivider;
         }
