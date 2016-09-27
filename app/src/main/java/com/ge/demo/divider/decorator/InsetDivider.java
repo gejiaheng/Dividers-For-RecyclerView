@@ -1,4 +1,4 @@
-package io.example.gjh.divider.decorator;
+package com.ge.demo.divider.decorator;
 
 import android.content.Context;
 import android.graphics.Canvas;

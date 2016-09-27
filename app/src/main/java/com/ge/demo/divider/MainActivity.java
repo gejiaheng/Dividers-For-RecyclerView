@@ -1,4 +1,4 @@
-package io.example.gjh.divider;
+package com.ge.demo.divider;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -15,9 +15,10 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import io.example.gjh.divider.decorator.InsetDivider;
-import io.example.gjh.divider.decorator.OverlayDivider;
-import io.example.gjh.divider.decorator.UnderneathDivider;
+import io.example.gjh.divider.R;
+import com.ge.demo.divider.decorator.InsetDivider;
+import com.ge.demo.divider.decorator.OverlayDivider;
+import com.ge.demo.divider.decorator.UnderneathDivider;
 
 /**
  * Just a simple demo to demonstrate three divider's implementations.
