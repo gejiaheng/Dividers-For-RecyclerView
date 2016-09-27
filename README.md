@@ -14,11 +14,37 @@ As described in [Meterial Design Guidelines](https://material-design.storage.goo
 
 > The divider sits within the baseline of the tile.
 
-So I would suggest using `OverlayDivider` or `InsetDivider`. They draw dividers on the tiles, needing no extra inset. 
+So I would suggest using `OverlayDivider` or `InsetDivider`. `OverlayDivider` draws dividers on the tiles, needing no extra inset. `InsetDivider` can draw dividers on or underneath the tiles. 
 
 ![](https://material-design.storage.googleapis.com/publish/material_v_8/material_ext_publish/0B_udO5B8pzrzYi1pc290WFRMc1U/components_dividers_specs.png)
 
-Play with the code and figure out how to draw these naughty dividers and you will be able to draw any divider or any thing you want.
+#Usage
+- UnderneathDivider  
+```java
+RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+recyclerView.setLayoutManager(new LinearLayoutManager(this));
+recyclerView.addItemDecoration(new UnderneathDivider(this, UnderneathDivider.VERTICAL_LIST));
+```  
+- OverlayDivider
+```java
+RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+recyclerView.setLayoutManager(new LinearLayoutManager(this));
+recyclerView.addItemDecoration(new OverlayDivider(this, OverlayDivider.VERTICAL_LIST));
+```
+- InsetDivider
+```java
+ItemDecoration divider = new InsetDivider.Builder(this)
+                            .orientation(InsetDivider.VERTICAL_LIST) 
+                            .dividerHeight(getResources().getDimensionPixelSize(R.dimen.divider_height))
+                            .color(getResources().getColor(R.color.colorAccent))
+                            .insets(getResources().getDimensionPixelSize(R.dimen.divider_inset), 0)
+                            .overlay(true)
+                            .build(); 
+                            
+RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+recyclerView.setLayoutManager(new LinearLayoutManager(this));
+recyclerView.addItemDecoration(divider);
+```
 
 # License
    Copyright 2016 gejiaheng
