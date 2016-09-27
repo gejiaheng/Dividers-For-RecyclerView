@@ -6,9 +6,9 @@ way to draw dividers. We use [RecyclerView.ItemDecoration](https://developer.and
 to decorate RecyclerView's tiles with dividers or anything you want. That is also why it is called ItemDecoration.
 
 There are three different implemetations of dividers.
-- [UnderneathDivider](https://github.com/gejiaheng/Dividers-For-RecyclerView/blob/master/app/src/main/java/io/example/gjh/divider/decorator/UnderneathDivider.java)
-- [OverlayDivider](https://github.com/gejiaheng/Dividers-For-RecyclerView/blob/master/app/src/main/java/io/example/gjh/divider/decorator/OverlayDivider.java)
-- [InsetDivider](https://github.com/gejiaheng/Dividers-For-RecyclerView/blob/master/app/src/main/java/io/example/gjh/divider/decorator/InsetDivider.java)
+- [UnderneathDivider](https://github.com/gejiaheng/Dividers-For-RecyclerView/blob/master/app/src/main/java/com/ge/demo/divider/decorator/UnderneathDivider.java)
+- [OverlayDivider](https://github.com/gejiaheng/Dividers-For-RecyclerView/blob/master/app/src/main/java/com/ge/demo/divider/decorator/OverlayDivider.java)
+- [InsetDivider](https://github.com/gejiaheng/Dividers-For-RecyclerView/blob/master/app/src/main/java/com/ge/demo/divider/decorator/InsetDivider.java)
 
 As described in [Meterial Design Guidelines](https://material-design.storage.googleapis.com/publish/material_v_8/material_ext_publish/0B_udO5B8pzrzYi1pc290WFRMc1U/components_dividers_specs.png):
 
