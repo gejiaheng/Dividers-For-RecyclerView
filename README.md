@@ -1,10 +1,15 @@
 # Dividers for RecyclerView
+## Attention
+There is an official implementation which is [DividerItemDecoration](https://developer.android.com/reference/androidx/recyclerview/widget/DividerItemDecoration). You should use this one.
+
+## Intention
 This is just a simple demo app to demonstrate how to draw dividers for RecyclerView. 
 
-RecyclerView doesn't provide straightforward interface for drawing dividers of lists. But actually it provides us a much more flexible
+RecyclerView doesn't provide a straightforward interface for drawing dividers of lists. But actually it provides us a much more flexible
 way to draw dividers. We use [RecyclerView.ItemDecoration](https://developer.android.com/reference/android/support/v7/widget/RecyclerView.ItemDecoration.html)
 to decorate RecyclerView's tiles with dividers or anything you want. That is also why it is called ItemDecoration.
 
+## Implementions
 There are three different implemetations of dividers.
 - [UnderneathDivider](https://github.com/gejiaheng/Dividers-For-RecyclerView/blob/master/app/src/main/java/com/ge/demo/divider/decorator/UnderneathDivider.java)
 - [OverlayDivider](https://github.com/gejiaheng/Dividers-For-RecyclerView/blob/master/app/src/main/java/com/ge/demo/divider/decorator/OverlayDivider.java)
@@ -18,7 +23,7 @@ So I would suggest using `OverlayDivider` or `InsetDivider`. `OverlayDivider` dr
 
 ![](https://material-design.storage.googleapis.com/publish/material_v_8/material_ext_publish/0B_udO5B8pzrzYi1pc290WFRMc1U/components_dividers_specs.png)
 
-#Usage
+## Usage
 - UnderneathDivider  
 ```java
 RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -46,7 +51,7 @@ recyclerView.setLayoutManager(new LinearLayoutManager(this));
 recyclerView.addItemDecoration(divider);
 ```
 
-# License
+## License
    Copyright 2016 gejiaheng
 
    Licensed under the Apache License, Version 2.0 (the "License");
